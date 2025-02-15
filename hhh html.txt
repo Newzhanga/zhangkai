@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>❤️ 给最特别的你 ❤️</title>
+    <style>
+        body {
+            background: #ffe6f2;
+            font-family: 'Microsoft Yahei';
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            margin: 15% auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff4d94;
+            font-size: 2.5em;
+            animation: fadeIn 2s;
+        }
+
+        .message {
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: #666;
+            margin: 30px 0;
+            opacity: 0;
+            animation: slideIn 1.5s forwards;
+            animation-delay: 1s;
+        }
+
+        .heart {
+            color: #ff1493;
+            font-size: 4em;
+            animation: beat 1s infinite;
+        }
+
+        button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2.5s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff1493;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* 添加飘落爱心效果 */
+        .falling-hearts {
+            position: fixed;
+            top: -20px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart-emoji {
+            position: absolute;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 飘落爱心 -->
+    <div class="falling-hearts" id="hearts"></div>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>亲爱的[朱波瑛]</h1>
+        <div class="message">
+            从遇见你的那天起<br>
+            我的世界开始有了不同的色彩<br>
+            你愿意让这个故事继续写下去吗？
+        </div>
+        <button onclick="showResponse()">请点击这里告诉我</button>
+    </div>
+
+    <script>
+        // 创建飘落爱心
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for(let i=0; i<30; i++){
+                const heart = document.createElement('div');
+                heart.className = 'heart-emoji';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function showResponse() {
+            const response = confirm("你愿意和我一起续写未来的故事吗？❤️");
+            if(response){
+                alert("🎉 这是我人生中最棒的答案！期待我们的未来！");
+                // 这里可以添加跳转到特定页面的代码
+            }else{
+                alert("😢 我会继续努力，直到你愿意的那一天...");
+            }
+        }
+    </script>
+</body>
+</html>
